@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const navLinkStyle = `cursor-pointer inline-flex items-center px-1 pt-1 text-gray-500 hover:text-indigo-400`;
 
 const iconButtonStyle = `flex bg-white p-2 rounded-full text-gray-400 hover:text-indigo-400 border-2 border-gray-500 hover:border-indigo-400`;
 
 export default function Nav() {
+  const { user, isLoading } = useUser();
   return (
     <nav className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4">
@@ -38,7 +40,7 @@ export default function Nav() {
                 {/* {` ${itemCount} Item(s)`} */}
               </button>
             </Link>
-            {/* {!user ? (
+            {!user ? (
               <a
                 href="/api/auth/login"
                 className="rounded-md border bg-purple-100 px-2 py-3 mr-2 ml-2"
@@ -65,7 +67,7 @@ export default function Nav() {
                   Logout
                 </a>
               </>
-            )} */}
+            )}
           </div>
         </div>
       </div>

@@ -14,7 +14,11 @@ const ProductItem = ({ product }: { product: any }) => (
   <a href="#" className="group">
     <div className={itemContainer}>
       <img
-        src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+        src={
+          product.imageURL
+            ? product.imageURL
+            : "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+        }
         className={imageStyle}
       />
     </div>
@@ -29,6 +33,6 @@ const listGridStyle = `grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-
 
 const itemContainer = `aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200`;
 
-const imageStyle = `h-full w-full object-cover object-center group-hover:opacity-75`;
+const imageStyle = `h-full w-full object-cover object-center group-hover:opacity-75 `;
 
 export default ProductList;

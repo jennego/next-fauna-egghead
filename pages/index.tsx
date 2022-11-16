@@ -25,6 +25,7 @@ const GET_ALL_PRODUCTS = gql`
         name
         price
         _id
+        imageURL
         description
         shop {
           _id
@@ -35,13 +36,17 @@ const GET_ALL_PRODUCTS = gql`
 `;
 
 const Home = () => {
-  const { data } = useQuery(GET_ALL_PRODUCTS);
+  const { data, loading } = useQuery(GET_ALL_PRODUCTS);
   console.log(data);
-  return (
-    <div>
-      <ProductList products={data.getAllProducts.data} />
-    </div>
-  );
+  if (loading) {
+    return "loading";
+  } else {
+    return (
+      <div>
+        <ProductList products={data.getAllProducts.data} />
+      </div>
+    );
+  }
 };
 
 export default Home;
