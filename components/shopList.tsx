@@ -8,7 +8,16 @@ export default function ShopsList({ shops }: { shops: any }) {
         <div key={shop._id} className="rounded-lg bg-white shadow mb-1">
           <ul className="divide-y divide-gray-100">
             <li className="flex justify-between p-3">
-              <h2>{shop.name}</h2>
+              <Link
+                href={`shops/${shop._id}/details`}
+                style={{
+                  fontSize: "20px",
+                  color: "blueviolet",
+                  textDecoration: "underline",
+                }}
+              >
+                <h2>{shop.name}</h2>
+              </Link>
               <div>
                 <Link href={`shops/${shop._id}/products`}>
                   <button className={btnClass}>Add Product</button>

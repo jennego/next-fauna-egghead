@@ -2,7 +2,7 @@ type Shop {
   name: String!
   description: String!
   coverImg: String!
-  products: [Product]
+  products: [Product] @relation
   ownerID: String
 }
 
@@ -18,4 +18,9 @@ type Product {
 type Query {
   getAllProducts: [Product]
   getShopsByOwnerID(ownerID: String!): [Shop]
+}
+
+type Mutation {
+  deleteShopsAndProducts(shopID: ID!): Boolean
+    @resolver(name: "deleteShopAndProducts")
 }
